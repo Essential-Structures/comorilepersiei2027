@@ -640,6 +640,7 @@
             // Global Background Audio Setup
             let bgAudio = new Audio('local%20resources/sound/fundalpagina.mp3');
             bgAudio.loop = true;
+            let userWantedBgMusic = false; // Flag strict pentru dorința utilizatorului
 
             function toggleBgMusic() {
                 const audioPing = document.getElementById('audio-ping');
@@ -650,6 +651,7 @@
 
                 if (bgAudio.paused) {
                     bgAudio.play().then(() => {
+                        userWantedBgMusic = true;
                         audioPing.classList.remove('hidden');
                         audioDot.classList.remove('bg-gray-500');
                         audioDot.classList.add('bg-gold-400');
@@ -659,6 +661,7 @@
                     }).catch(err => console.log("Eroare redare fundal:", err));
                 } else {
                     bgAudio.pause();
+                    userWantedBgMusic = false;
                     audioPing.classList.add('hidden');
                     audioDot.classList.remove('bg-gold-400');
                     audioDot.classList.add('bg-gray-500');
@@ -694,16 +697,16 @@
                 }
 
                 if (item.isPlaying) {
-                    // A DOUA APĂSARE: Punem pe pauză instrumentul, păstrăm timpul și reluăm fundalul
+                    // A DOUA APĂSARE: Punem pe pauză instrumentul, păstrăm timpul și reluăm fundalul DOAR DACĂ utilizatorul l-a pornit manual în prealabil
                     item.audio.pause();
                     item.isPlaying = false;
                     btnElement.innerHTML = `<i class="fa-solid fa-play text-xs"></i><span>Ascultă ${name} (Mostră)</span>`;
 
-                    if (bgAudio && bgAudio.paused) {
+                    if (userWantedBgMusic && bgAudio && bgAudio.paused) {
                         bgAudio.play().catch(e => console.log(e));
                     }
                 } else {
-                    // PRIMA APĂSARE (sau reluare de unde a rămas): Pornim instrumentul și oprim fundalul
+                    // PRIMA APĂSARE (sau reluare de unde a rămas): Pornim instrumentul și oprim fundalul temporar dacă rula
                     if (bgAudio && !bgAudio.paused) {
                         bgAudio.pause();
                     }
@@ -718,7 +721,7 @@
                     item.audio.onended = () => {
                         item.isPlaying = false;
                         btnElement.innerHTML = `<i class="fa-solid fa-play text-xs"></i><span>Ascultă ${name} (Mostră)</span>`;
-                        if (bgAudio) {
+                        if (userWantedBgMusic && bgAudio) {
                             bgAudio.play().catch(e => console.log(e));
                         }
                     };
