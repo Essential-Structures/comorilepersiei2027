@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comorile Persiei - Turneu Național & Workshop-uri de Muzică Persană</title>
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- FontAwesome for icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Google Fonts: Cinzel Decorative, Amiri, Inter -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lapis: {
+                            800: '#14223d',
+                            900: '#0c1628',
+                            950: '#070d18',
+                        },
+                        gold: {
+                            300: '#f3e5ab',
+                            400: '#e6ca65',
+                            500: '#d4af37',
+                            600: '#aa8823',
+                            700: '#7a5f13',
+                        },
+                        parchment: '#f7f3e8',
+                        terracotta: '#8b3a2b',
+                    },
+                    fontFamily: {
+                        cinzel: ['"Cinzel Decorative"', 'serif'],
+                        amiri: ['Amiri', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+        <style>
+        /* Custom Persian/Zoroastrian aesthetic styles */
+        body {
+            background-color: #070d18;
+            color: #f7f3e8;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 50%, rgba(20, 34, 61, 0.8) 0%, transparent 60%);
+        }
+
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+
+        .gold-border-glow:hover {
+            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa8823 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-button {
+            background: linear-gradient(135deg, #d4af37 0%, #aa8823 100%);
+            color: #070d18;
+            transition: all 0.3s ease;
+        }
+        .gold-button:hover {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Soundwave animation */
+        .wave-bar {
+            animation: soundWave 1.2s ease-in-out infinite alternate;
+        }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes soundWave {
+            0% { height: 4px; }
+            100% { height: 16px; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070d18;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3d5e;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+    </style>
+    </head>
+    <body class="font-sans antialiased leading-relaxed selection:bg-gold-500 selection:text-lapis-950">
+        <!-- HEADER COMMON FOR ALL SECTIONS -->
+        <header class="fixed top-0 left-0 right-0 z-50 bg-lapis-950/90 backdrop-blur-md border-b border-gold-500/20 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <!-- Logo and Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold-500/50 flex items-center justify-center bg-lapis-900 group-hover:border-gold-500 transition-all shadow-md">
+                        <!-- Faravahar / Winged Emblem Icon (Zoroastrian motif) -->
+                        <svg viewBox="0 0 100 100" class="w-7 h-7 sm:w-8 sm:h-8 fill-gold-500">
+                            <path d="M50 20 C 35 20, 10 35, 5 45 C 15 45, 30 40, 42 35 C 38 45, 32 55, 20 60 C 32 58, 42 50, 46 42 C 47 50, 48 70, 50 85 C 52 70, 53 50, 54 42 C 58 50, 68 58, 80 60 C 68 55, 62 45, 58 35 C 70 40, 85 45, 95 45 C 90 35, 65 20, 50 20 Z"/>
+                            <circle cx="50" cy="28" r="6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-sm sm:text-xl font-bold tracking-wider gold-gradient-text block">COMORILE PERSIEI</span>
+                        <span class="text-[9px] sm:text-[10px] tracking-widest text-gold-300/70 uppercase block -mt-1">Muzică & Cultură Tradițională</span>
+                    </div>
+                </a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#hero" class="text-parchment/80 hover:text-gold-400 transition-colors">Acasă</a>
+                    <a href="#instrumente" class="text-parchment/80 hover:text-gold-400 transition-colors">Instrumente</a>
+                    <a href="#artisti" class="text-parchment/80 hover:text-gold-400 transition-colors">Artiști</a>
+                    <a href="#turneu" class="text-parchment/80 hover:text-gold-400 transition-colors">Turneu</a>
+                    <a href="#cursuri" class="text-parchment/80 hover:text-gold-400 transition-colors">Cursuri & Workshop-uri</a>
+                </nav>
+                <!-- Audio Control & Action Buttons -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <!-- Background Audio Toggle Button -->
+                    <button id="bg-audio-toggle" onclick="toggleBgMusic()" title="Muzică de fundal (Play/Pauză)" class="relative group flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full border border-gold-500/40 bg-lapis-900/80 hover:bg-lapis-800 text-gold-400 text-xs font-medium transition-all shadow-sm">
+                        <span class="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                            <span id="audio-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75 hidden"></span>
+                            <span id="audio-dot" class="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-gray-500"></span>
+                        </span>
+                        <i id="audio-icon" class="fa-solid fa-music text-[10px] sm:text-xs"></i>
+                        <span id="audio-status-text" class="hidden sm:inline">Muzică: Off</span>
+                        <!-- Soundwaves when playing -->
+                        <div id="soundwave-bars" class="hidden flex items-end gap-0.5 h-3">
+                            <span class="wave-bar w-0.5 bg-gold-400 rounded-full"></span>
+                            <span class="wave-bar w-0.5 bg-gold-400 rounded-full"></span>
+                            <span class="wave-bar w-0.5 bg-gold-400 rounded-full"></span>
+                        </div>
+                    </button>
+                    <!-- Header Action CTA Buttons -->
+                    <div class="hidden sm:flex items-center gap-2">
+                        <a href="#turneu" class="gold-button font-semibold text-xs px-3.5 py-2 rounded-md shadow uppercase tracking-wider pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                        <a href="#cursuri" class="border border-gold-500/60 hover:bg-gold-500/10 text-gold-400 text-xs font-semibold px-3.5 py-2 rounded-md transition-all uppercase tracking-wider pointer-events-none opacity-50 cursor-not-allowed">Înscriere</a>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden text-gold-400 p-1.5 focus:outline-none">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-lapis-950/98 border-b border-gold-500/20 px-4 py-4 space-y-3">
+                <a href="#hero" onclick="toggleMobileMenu()" class="block text-parchment/90 hover:text-gold-400 py-1 text-sm font-medium">Acasă</a>
+                <a href="#instrumente" onclick="toggleMobileMenu()" class="block text-parchment/90 hover:text-gold-400 py-1 text-sm font-medium">Instrumente</a>
+                <a href="#artisti" onclick="toggleMobileMenu()" class="block text-parchment/90 hover:text-gold-400 py-1 text-sm font-medium">Artiști</a>
+                <a href="#turneu" onclick="toggleMobileMenu()" class="block text-parchment/90 hover:text-gold-400 py-1 text-sm font-medium">Concerte & Bilete</a>
+                <a href="#cursuri" onclick="toggleMobileMenu()" class="block text-parchment/90 hover:text-gold-400 py-1 text-sm font-medium">Cursuri & Workshop-uri</a>
+                <div class="pt-2 flex flex-col gap-2">
+                    <a href="#turneu" onclick="toggleMobileMenu()" class="gold-button text-center font-semibold text-xs py-2.5 rounded-md uppercase pointer-events-none opacity-50 cursor-not-allowed">Bilete Spectacole</a>
+                    <a href="#cursuri" onclick="toggleMobileMenu()" class="border border-gold-500/60 text-gold-400 text-center font-semibold text-xs py-2.5 rounded-md uppercase pointer-events-none opacity-50 cursor-not-allowed">Înscriere Workshop</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative pt-28 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-32 px-4 overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none opacity-10 flex items-center justify-center">
+                <svg class="w-[500px] h-[500px] sm:w-[800px] sm:h-[800px] text-gold-500 animate-[spin_120s_linear_infinite]" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <polygon points="50,5 63,35 95,35 70,55 80,85 50,65 20,85 30,55 5,35 37,35" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                </svg>
+            </div>
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[11px] sm:text-sm font-medium mb-6">
+                    <i class="fa-solid fa-star text-[9px]"></i>
+                    <span>Turneu Național de Muzică Tradițională Persană</span>
+                    <i class="fa-solid fa-star text-[9px]"></i>
+                </div>
+                <h1 class="font-cinzel text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-parchment mb-6 leading-tight">
+                    COMORILE <span class="gold-gradient-text">PERSIEI</span>
+                </h1>
+                <p class="text-sm sm:text-base md:text-xl text-parchment/90 font-light max-w-3xl mx-auto mb-8 leading-relaxed px-2 sm:px-0">
+                    O călătorie sonoră fascinantă în inima tradiției clasice, adusă pe scenele din România de muzicieni de excepție din <strong class="text-gold-400 font-semibold">Iran</strong> și <strong class="text-gold-400 font-semibold">România</strong>.
+                    Descoperiți vibrația profundă și autentică oferită de instrumente de colecție precum <a href="#inst-daf" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">daf</a>, <a href="#inst-tombak" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">tombak</a>, <a href="#inst-tar" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">tar</a>, <a href="#inst-kemanche" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">kemanche</a>, <a href="#inst-vioara" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">vioară</a> și <a href="#inst-oud" class="text-gold-400 underline decoration-gold-500/50 hover:text-gold-300 font-medium transition-colors">oud</a>,
+                    alături de cursuri și workshop-uri speciale dedicate complexului <span class="text-gold-300 italic">sistem modal persan (Dastgāh)</span>.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full px-4 sm:px-0">
+                    <a href="#turneu" class="w-full sm:w-auto gold-button font-bold text-xs sm:text-sm px-6 sm:px-8 py-3.5 rounded-lg shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-ticket"></i> Vezi Datele Spectacolelor
+                    </a>
+                    <a href="#cursuri" class="w-full sm:w-auto bg-lapis-900/90 hover:bg-lapis-800 text-gold-400 border border-gold-500/50 font-semibold text-xs sm:text-sm px-6 sm:px-8 py-3.5 rounded-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-graduation-cap"></i> Înscriere Workshop
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION SEPARATOR DECORATION -->
+        <div class="w-full flex items-center justify-center gap-4 py-4 sm:py-6 opacity-60">
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+            <div class="text-gold-500 text-xs">◆ ✦ ◆</div>
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+        </div>
+
+        <!-- 1) PRESENTARE INSTRUMENTE SECTIUNE -->
+        <section id="instrumente" class="py-12 sm:py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-400 mb-3">Instrumente Tradiționale</h2>
+                <p class="text-parchment/70 max-w-2xl mx-auto text-xs sm:text-base px-2">
+                    Ascultați sonoritatea distinctă a fiecărui instrument.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Instrument 1: DAF -->
+                <div id="inst-daf" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="4"/>
+                                <circle cx="50" cy="50" r="37" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2,2"/>
+                                <circle cx="20" cy="40" r="2" fill="currentColor"/>
+                                <circle cx="22" cy="50" r="2" fill="currentColor"/>
+                                <circle cx="25" cy="60" r="2" fill="currentColor"/>
+                                <circle cx="80" cy="40" r="2" fill="currentColor"/>
+                                <circle cx="78" cy="50" r="2" fill="currentColor"/>
+                                <circle cx="75" cy="60" r="2" fill="currentColor"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Percuție</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">DAF (Daf)</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Cadru mare din lemn cu membrană din piele naturală, echipat cu inele de alamă la interior. Daf-ul este încărcat de simbolistică mistică și sufită, capabil să creeze ritmuri hipnotice și pline de energie cosmică.
+                        </p>
+                    </div>
+                    <button id="btn-daf" onclick="playInstrumentSample('Daf', 'local%20resources/sound/daf.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Daf (Mostră)</span>
+                    </button>
+                </div>
+
+                <!-- Instrument 2: TOMBAK -->
+                <div id="inst-tombak" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <path d="M30 20 L70 20 L60 50 L65 80 L35 80 L40 50 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                                <ellipse cx="50" cy="20" rx="20" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <ellipse cx="50" cy="80" rx="15" ry="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Percuție</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">TOMBAK</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Principalul instrument de percuție din lemn sculptat al muzicii persane. Tehnicile sale rafinate de degete și palme oferă o paletă timbrală extrem de variată, de la bași adânci la accente ascuțite.
+                        </p>
+                    </div>
+                    <button id="btn-tombak" onclick="playInstrumentSample('Tombak', 'local%20resources/sound/tombak.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Tombak (Mostră)</span>
+                    </button>
+                </div>
+
+                <!-- Instrument 3: TAR -->
+                <div id="inst-tar" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <circle cx="35" cy="70" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="55" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="45" y1="56" x2="45" y2="15" stroke="currentColor" stroke-width="3"/>
+                                <rect x="40" y="10" width="10" height="12" fill="none" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Lăuta cu gât lung</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">TAR (Tār)</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Lăută cu corp sculptat din lemn de dud în formă de dublă inimă, acoperită cu o membrană fină din piele de miel. Sunetul său rezonează direct cu microtonurile nuanțate din sistemul Radif.
+                        </p>
+                    </div>
+                    <button id="btn-tar" onclick="playInstrumentSample('Tar', 'local%20resources/sound/tar.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Tar (Mostră)</span>
+                    </button>
+                </div>
+
+                <!-- Instrument 4: KEMANCHE -->
+                <div id="inst-kemanche" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <circle cx="50" cy="65" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-width="3"/>
+                                <path d="M25 25 Q35 50 25 75" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Vioară sferică cu arcuș</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">KEMANCHE (Kamancheh)</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Vioara tradițională persană cu picior. Corpul sferic acoperit cu membrană de pește conferă un glas melancolic, cald și pătrunzător, perfect pentru ornamentațiile specifice melodiilor orientale.
+                        </p>
+                    </div>
+                    <button id="btn-kemanche" onclick="playInstrumentSample('Kemanche', 'local%20resources/sound/kemanche.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Kemanche (Mostră)</span>
+                    </button>
+                </div>
+
+                <!-- Instrument 5: VIOARĂ -->
+                <div id="inst-vioara" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <path d="M40 25 C40 20, 60 20, 60 25 C60 35, 45 40, 45 50 C45 60, 65 65, 65 75 C65 85, 35 85, 35 75 C35 65, 55 60, 55 50 C55 40, 40 35, 40 25 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="10" x2="50" y2="88" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Vioară netemperată</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">VIOARĂ</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Adoptată în muzica persană începând cu secolul XX, în acordaje specifice (cum ar fi Sol-Re-La-Re), vioara permite interpretarea microtonurilor specifice tradiției persane.
+                        </p>
+                    </div>
+                    <button id="btn-vioara" onclick="playInstrumentSample('Vioară', 'local%20resources/sound/vioarapersana.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Vioară (Mostră)</span>
+                    </button>
+                </div>
+
+                <!-- Instrument 6: OUD -->
+                <div id="inst-oud" class="bg-lapis-900/60 rounded-xl p-5 sm:p-6 gold-border gold-border-glow transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-44 sm:h-48 rounded-lg overflow-hidden mb-5 bg-lapis-950 border border-gold-500/20 flex items-center justify-center group">
+                            <svg class="w-28 h-28 sm:w-32 sm:h-32 text-gold-500/80 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 100 100">
+                                <path d="M30 40 Q30 75 50 85 Q70 75 70 40 Q70 25 50 20 Q30 25 30 40 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="20" x2="50" y2="5" stroke="currentColor" stroke-width="2.5"/>
+                                <circle cx="50" cy="50" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                            <span class="absolute bottom-2 right-2 text-[10px] sm:text-xs bg-lapis-950/80 px-2 py-1 rounded text-gold-300 font-mono">Lăuta fără taste</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-2">OUD (Barbat)</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Strămoșul lăutelor europene, cu un corp adânc în formă de pară și gât scurt fără taste. Sunetul său cald, profund și rezonant oferă o bază armonică și melodică inconfundabilă.
+                        </p>
+                    </div>
+                    <button id="btn-oud" onclick="playInstrumentSample('Oud', 'local%20resources/sound/oud.mp3', this)" class="w-full bg-lapis-800 hover:bg-gold-500 hover:text-lapis-950 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i>
+                        <span>Ascultă Oud (Mostră)</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION SEPARATOR DECORATION -->
+        <div class="w-full flex items-center justify-center gap-4 py-4 sm:py-6 opacity-60">
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+            <div class="text-gold-500 text-xs">◆ ✦ ◆</div>
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+        </div>
+
+        <!-- 2) SECTIUNE ARTISTI -->
+        <section id="artisti" class="py-12 sm:py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-400 mb-3">Artiști Invitați</h2>
+                <p class="text-parchment/70 max-w-2xl mx-auto text-xs sm:text-base px-2">
+                    Maeștri ai instrumentelor persane din Iran alături de muzicieni reputați din România, reuniți într-un dialog cultural memorabil.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Artist 1: Sara Eslami -->
+                <div class="bg-lapis-900/40 rounded-xl p-5 sm:p-6 border border-gold-500/20 text-center hover:border-gold-500/60 transition-all group">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-600 to-gold-300 mb-4 shadow-lg">
+                        <div class="w-full h-full rounded-full bg-lapis-950 flex items-center justify-center overflow-hidden">
+                            <img src="local resources/images/artistii/Sara Eslami/saraeslamiprofil.jpg" alt="Sara Eslami" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        </div>
+                    </div>
+                    <h3 class="font-cinzel text-lg sm:text-xl font-bold text-gold-400">Sara Eslami</h3>
+                    <p class="text-gold-300/80 text-[11px] sm:text-xs uppercase tracking-widest mb-3">tar (Iran, România)</p>
+                    <a href="https://www.instagram.com/tahmineh_events/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline font-medium"> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Profil Social Media </a>
+                </div>
+                <!-- Artist 2: Reza Dardbandi -->
+                <div class="bg-lapis-900/40 rounded-xl p-5 sm:p-6 border border-gold-500/20 text-center hover:border-gold-500/60 transition-all group">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-600 to-gold-300 mb-4 shadow-lg">
+                        <div class="w-full h-full rounded-full bg-lapis-950 flex items-center justify-center overflow-hidden">
+                            <img src="local resources/images/artistii/Reza Darbandi/rezadarbandiprofil.jpg" alt="Reza Dardbandi" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        </div>
+                    </div>
+                    <h3 class="font-cinzel text-lg sm:text-xl font-bold text-gold-400">Reza Dardbandi</h3>
+                    <p class="text-gold-300/80 text-[11px] sm:text-xs uppercase tracking-widest mb-3">daf, toumbak, oud, vioară (Iran)</p>
+                    <a href="https://www.instagram.com/reza.darbandi" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline font-medium"> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Profil Social Media </a>
+                </div>
+                <!-- Artist 3: Hossein Sanaei -->
+                <div class="bg-lapis-900/40 rounded-xl p-5 sm:p-6 border border-gold-500/20 text-center hover:border-gold-500/60 transition-all group">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-600 to-gold-300 mb-4 shadow-lg">
+                        <div class="w-full h-full rounded-full bg-lapis-950 flex items-center justify-center overflow-hidden">
+                            <img src="local resources/images/artistii/Hossein Sanaei/hosseinsanaeiprofil.jpg" alt="Hossein Sanaei" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        </div>
+                    </div>
+                    <h3 class="font-cinzel text-lg sm:text-xl font-bold text-gold-400">Hossein Sanaei</h3>
+                    <p class="text-gold-300/80 text-[11px] sm:text-xs uppercase tracking-widest mb-3">kemanche, vioară (Iran)</p>
+                    <a href="https://www.instagram.com/hosseinsanaei1" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline font-medium"> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Profil Social Media </a>
+                </div>
+                <!-- Artist 4: Vahid Kasaeyan -->
+                <div class="bg-lapis-900/40 rounded-xl p-5 sm:p-6 border border-gold-500/20 text-center hover:border-gold-500/60 transition-all group">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-gold-600 to-gold-300 mb-4 shadow-lg">
+                        <div class="w-full h-full rounded-full bg-lapis-950 flex items-center justify-center overflow-hidden">
+                            <img src="local resources/images/artistii/Vahid Kasaeyan/vahidkasaeyanprofil.jpg" alt="Vahid Kasaeyan" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                        </div>
+                    </div>
+                    <h3 class="font-cinzel text-lg sm:text-xl font-bold text-gold-400">Vahid Kasaeyan</h3>
+                    <p class="text-gold-300/80 text-[11px] sm:text-xs uppercase tracking-widest mb-3">setar, toumbak, oud (Iran)</p>
+                    <a href="https://www.instagram.com/vahid.kasaeyan/" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 underline font-medium"> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Profil Social Media </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION SEPARATOR DECORATION -->
+        <div class="w-full flex items-center justify-center gap-4 py-4 sm:py-6 opacity-60">
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+            <div class="text-gold-500 text-xs">◆ ✦ ◆</div>
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+        </div>
+
+        <!-- 3) SECTIUNE TURNEU (TABEL CONCERTE) -->
+        <section id="turneu" class="py-12 sm:py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-400 mb-3">Turneul Național - Concerte</h2>
+                <p class="text-parchment/70 max-w-2xl mx-auto text-xs sm:text-base px-2">
+                    Consultați programul turneului, achiziționați bilete sau solicitați organizarea unui workshop în orașul dumneavoastră.
+                </p>
+            </div>
+            <div class="overflow-x-auto gold-border rounded-xl bg-lapis-900/40 backdrop-blur">
+                <table class="w-full text-left border-collapse min-w-[600px] sm:min-w-full">
+                    <thead>
+                        <tr class="border-b border-gold-500/20 bg-lapis-900/80 text-gold-400 font-cinzel text-xs sm:text-base">
+                            <th class="py-3.5 sm:py-4 px-4 sm:px-6">Oraș</th>
+                            <th class="py-3.5 sm:py-4 px-4 sm:px-6">Dată & Locație</th>
+                            <th class="py-3.5 sm:py-4 px-4 sm:px-6 text-right">Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gold-500/10 text-xs sm:text-base text-parchment/90">
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">București</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Înscriere curs</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Brașov</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Ploiești</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Craiova</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Pitești</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Cluj-Napoca</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Iași</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Focșani</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Caracal</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-lapis-900/30 transition-colors">
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 font-semibold text-gold-300">Constanța</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6">2027 (detalii concrete după confirmare viză artiști)</td>
+                            <td class="py-3.5 sm:py-4 px-4 sm:px-6 text-right space-x-1.5 sm:space-x-2 whitespace-nowrap">
+                                <a href="https://www.iabilet.ro" target="_blank" class="inline-block gold-button text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded shadow pointer-events-none opacity-50 cursor-not-allowed">Bilete</a>
+                                <a href="https://forms.gle/placeholder" target="_blank" class="inline-block bg-lapis-800 hover:bg-lapis-700 text-gold-400 border border-gold-500/40 text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all pointer-events-none opacity-50 cursor-not-allowed">Cere Workshop</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Mesaj adăugat după tabel -->
+            <div class="mt-8 text-center px-4">
+                <p class="text-parchment/80 text-xs sm:text-base font-light">
+                    Ne vrei la tine în oraș, dar nu îl găsești în listă? Contactează-ne și hai să colaborăm: <a href="mailto:asociatia.nirmal.art@gmail.com" class="text-gold-400 hover:text-gold-300 underline font-medium">asociatia.nirmal.art@gmail.com</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION SEPARATOR DECORATION -->
+        <div class="w-full flex items-center justify-center gap-4 py-4 sm:py-6 opacity-60">
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+            <div class="text-gold-500 text-xs">◆ ✦ ◆</div>
+            <div class="h-px bg-gradient-to-r from-transparent via-gold-500/50 to-transparent w-1/3"></div>
+        </div>
+
+        <!-- 4) CURSURI SI WORKSHOP-URI -->
+        <section id="cursuri" class="py-12 sm:py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-bold text-gold-400 mb-3">Cursuri & Workshop-uri</h2>
+                <p class="text-parchment/70 max-w-2xl mx-auto text-xs sm:text-base px-2">
+                    Sistemul modal persan (<span class="text-gold-300 italic">Dastgāh</span>) și repertoriul de radif-uri. Parte teoretică și aplicare practică pe instrument.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12">
+                <!-- Curs Instrumente Temperate -->
+                <div class="bg-lapis-900/60 rounded-xl p-6 sm:p-8 gold-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6 text-xl">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-3">Curs pentru Instrumente Temperate</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Dedicat instrumentistilor care utilizează instrumente temperate (precum vioara sau pianul adaptat). Se studiază adaptarea intervalelor microtonale și transpunerea modurilor persane în practica occidentală. Cursul principal se desfășoară la București.
+                        </p>
+                    </div>
+                    <a href="https://forms.gle/placeholder" target="_blank" class="w-full text-center gold-button font-semibold text-xs sm:text-sm py-3 rounded-lg shadow uppercase tracking-wider pointer-events-none opacity-50 cursor-not-allowed">
+                        Înscriere Curs București
+                    </a>
+                </div>
+                <!-- Curs Instrumente Netemperate -->
+                <div class="bg-lapis-900/60 rounded-xl p-6 sm:p-8 gold-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-lg bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6 text-xl">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gold-400 mb-3">Curs pentru Instrumente Netemperate</h3>
+                        <p class="text-parchment/80 text-xs sm:text-sm leading-relaxed mb-6">
+                            Dedicat instrumentelor tradiționale cu coarde și percuție (Tar, Setar, Kemanche, Oud, Daf, Tombak). Aprofundarea intonației pure, a ornamentațiilor specifice și a rigorilor modului Dastgāh. Cursul principal are loc la București.
+                        </p>
+                    </div>
+                    <a href="https://forms.gle/placeholder" target="_blank" class="w-full text-center gold-button font-semibold text-xs sm:text-sm py-3 rounded-lg shadow uppercase tracking-wider pointer-events-none opacity-50 cursor-not-allowed">
+                        Înscriere Curs București
+                    </a>
+                </div>
+            </div>
+            <div class="bg-lapis-950/80 border border-gold-500/30 rounded-xl p-5 sm:p-6 text-center max-w-3xl mx-auto">
+                <p class="text-parchment/90 text-xs sm:text-sm">
+                    <strong class="text-gold-400">Notă privind workshop-urile în țară:</strong> Workshop-urile practice se pot organiza în celelalte orașe din turneu, <strong class="text-gold-400">la cerere</strong>. Apăsați butonul <span class="italic text-gold-300">„Cere Workshop”</span> din dreptul orașului dorit din tabelul de turneu.
+                </p>
+            </div>
+        </section>
+
+        <!-- FOOTER (5) ORGANIZATOR, SPOTIFY, SPONSORI) -->
+        <footer class="bg-lapis-950 border-t border-gold-500/20 pt-12 sm:pt-16 pb-12 px-4">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-center md:text-left">
+                <!-- a. Organizatorul -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-cinzel text-gold-400 text-lg font-bold mb-4">Organizator</h4>
+                    <a href="https://www.nirmal-art.com/implica-te/" target="_blank" class="group inline-block mb-3">
+                        <img src="https://80f82e55e5.clvaw-cdnwnd.com/b05aeae5db8fae9f502ad04ba17466f1/200003640-cb307cb30b/logo%20nirmal.png" alt="Asociația NirmalArt Logo" class="h-10 sm:h-12 w-auto object-contain brightness-125 filter drop-shadow group-hover:scale-105 transition-transform">
+                    </a>
+                    <a href="https://www.nirmal-art.com/implica-te/" target="_blank" class="text-gold-400 hover:text-gold-300 font-semibold text-xs sm:text-sm tracking-wider uppercase underline decoration-gold-500/50">
+                        Implica-te!
+                    </a>
+                </div>
+                <!-- b. Album Spotify -->
+                <div class="flex flex-col items-center justify-center">
+                    <h4 class="font-cinzel text-gold-400 text-lg font-bold mb-4">Ascultă Albumul Oficial</h4>
+                    <a href="https://open.spotify.com/album/5zFRFq7pyObtKH1k9eOt9O" target="_blank" class="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1DB954]/10 hover:bg-[#1DB954]/20 border border-[#1DB954]/40 text-[#1DB954] font-semibold text-xs sm:text-sm transition-all shadow">
+                        <i class="fa-brands fa-spotify text-lg sm:text-xl"></i>
+                        <span>Deschide pe Spotify</span>
+                    </a>
+                </div>
+                <!-- c. Coloana sponsori (Placeholdere) -->
+                <div class="flex flex-col items-center md:items-end">
+                    <h4 class="font-cinzel text-gold-400 text-lg font-bold mb-4">Parteneri & Sponsori</h4>
+                    <div class="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-end">
+                        <div class="w-20 sm:w-24 h-10 sm:h-12 rounded bg-lapis-900 border border-gold-500/20 flex items-center justify-center text-[11px] sm:text-xs text-parchment/40 font-mono">Sponsor 1</div>
+                        <div class="w-20 sm:w-24 h-10 sm:h-12 rounded bg-lapis-900 border border-gold-500/20 flex items-center justify-center text-[11px] sm:text-xs text-parchment/40 font-mono">Sponsor 2</div>
+                        <div class="w-20 sm:w-24 h-10 sm:h-12 rounded bg-lapis-900 border border-gold-500/20 flex items-center justify-center text-[11px] sm:text-xs text-parchment/40 font-mono">Sponsor 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-7xl mx-auto mt-10 sm:mt-12 pt-6 border-t border-gold-500/10 text-center text-[11px] sm:text-xs text-parchment/50">
+                &copy; 2026 Comorile Persiei. Toate drepturile rezervate.
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT LOGIC -->
+        <script>
+            // Mobile Menu Toggle
+            function toggleMobileMenu() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            }
+
+            // Global Background Audio Setup
+            let bgAudio = new Audio('local%20resources/sound/fundalpagina.mp3');
+            bgAudio.loop = true;
+
+            function toggleBgMusic() {
+                const audioPing = document.getElementById('audio-ping');
+                const audioDot = document.getElementById('audio-dot');
+                const audioIcon = document.getElementById('audio-icon');
+                const audioStatusText = document.getElementById('audio-status-text');
+                const soundwaveBars = document.getElementById('soundwave-bars');
+
+                if (bgAudio.paused) {
+                    bgAudio.play().then(() => {
+                        audioPing.classList.remove('hidden');
+                        audioDot.classList.remove('bg-gray-500');
+                        audioDot.classList.add('bg-gold-400');
+                        audioStatusText.innerText = "Muzică: On";
+                        soundwaveBars.classList.remove('hidden');
+                        audioIcon.classList.add('hidden');
+                    }).catch(err => console.log("Eroare redare fundal:", err));
+                } else {
+                    bgAudio.pause();
+                    audioPing.classList.add('hidden');
+                    audioDot.classList.remove('bg-gold-400');
+                    audioDot.classList.add('bg-gray-500');
+                    audioStatusText.innerText = "Muzică: Off";
+                    soundwaveBars.classList.add('hidden');
+                    audioIcon.classList.remove('hidden');
+                }
+            }
+
+            // Instrument Audio Management with Toggle & Background Pause/Resume
+            const instrumentsData = {};
+
+            function playInstrumentSample(name, path, btnElement) {
+                if (!instrumentsData[name]) {
+                    instrumentsData[name] = {
+                        audio: new Audio(path),
+                        isPlaying: false
+                    };
+                }
+
+                const item = instrumentsData[name];
+
+                // Oprim orice alt instrument care rulează în prezent
+                for (let key in instrumentsData) {
+                    if (key !== name && instrumentsData[key].isPlaying) {
+                        instrumentsData[key].audio.pause();
+                        instrumentsData[key].isPlaying = false;
+                        const otherBtn = document.getElementById('btn-' + key.toLowerCase().replace(/ă/g, 'a').replace(/â/g, 'a').replace(/ș/g, 's').replace(/ț/g, 't'));
+                        if (otherBtn) {
+                            otherBtn.innerHTML = `<i class="fa-solid fa-play text-xs"></i><span>Ascultă ${key} (Mostră)</span>`;
+                        }
+                    }
+                }
+
+                if (item.isPlaying) {
+                    // A DOUA APĂSARE: Punem pe pauză instrumentul, păstrăm timpul și reluăm fundalul
+                    item.audio.pause();
+                    item.isPlaying = false;
+                    btnElement.innerHTML = `<i class="fa-solid fa-play text-xs"></i><span>Ascultă ${name} (Mostră)</span>`;
+
+                    if (bgAudio && bgAudio.paused) {
+                        bgAudio.play().catch(e => console.log(e));
+                    }
+                } else {
+                    // PRIMA APĂSARE (sau reluare de unde a rămas): Pornim instrumentul și oprim fundalul
+                    if (bgAudio && !bgAudio.paused) {
+                        bgAudio.pause();
+                    }
+
+                    item.audio.play().then(() => {
+                        item.isPlaying = true;
+                        btnElement.innerHTML = `<i class="fa-solid fa-pause text-xs"></i><span>Oprește ${name}</span>`;
+                    }).catch(err => {
+                        console.error("Eroare redare instrument:", err);
+                    });
+
+                    item.audio.onended = () => {
+                        item.isPlaying = false;
+                        btnElement.innerHTML = `<i class="fa-solid fa-play text-xs"></i><span>Ascultă ${name} (Mostră)</span>`;
+                        if (bgAudio) {
+                            bgAudio.play().catch(e => console.log(e));
+                        }
+                    };
+                }
+            }
+        </script>
+    </body>
+</html>
